@@ -7,6 +7,7 @@ return {
   },
   config = function()
     local dap, dapui = require "dap", require "dapui"
+    require("dapui").setup()
 
     dap.listeners.before.attach.dapui_config = function()
       dapui.open()
@@ -24,7 +25,7 @@ return {
     dap.adapters.gdb = {
       type = "executable",
       command = "gdb",
-      args = { "-i", "dap" },
+      args = { "--interpreter=dap", "--eval-command", "set print pretty on" },
     }
 
     dap.configurations.c = {
@@ -37,10 +38,13 @@ return {
         end,
         cwd = "${workspaceFolder}",
         stopAtEntry = false,
+        console = "integratedTerminal",
       },
     }
 
-    dapui.setup {}
+    vim.cmd "hi DapBreakpointColor guifg=#fa4848"
+    vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DapBreakpointColor", linehl = "", numhl = "" })
+
     require("nvim-dap-virtual-text").setup()
   end,
 }

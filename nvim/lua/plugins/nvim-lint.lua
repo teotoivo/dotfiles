@@ -5,8 +5,8 @@ return {
     local lint = require "lint"
 
     lint.linters_by_ft = {
-      c = { "clang-tidy" },
-      cpp = { "clang-tidy" },
+      c = { "clangtidy" },
+      cpp = { "clangtidy" },
       python = { "ruff" },
       lua = { "selene" },
     }
