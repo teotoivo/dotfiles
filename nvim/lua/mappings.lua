@@ -3,6 +3,7 @@ require "nvchad.mappings"
 -- add yours here
 
 local map = vim.keymap.set
+local opts = { noremap = true, silent = true }
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
@@ -34,19 +35,6 @@ vim.api.nvim_create_autocmd("BufLeave", {
     vim.api.nvim_del_keymap("n", "l")
   end,
 })
-vim.api.nvim_set_keymap(
-  "n",
-  ".",
-  ':lua require"nvim-tree.api".change_dir(vim.fn.expand("%:p:h"))<CR>',
-  { noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-  "n",
-  "<BS>",
-  ':lua require"nvim-tree.api".change_dir("..")<CR>',
-  { noremap = true, silent = true }
-)
-
 local dap, dapui = require "dap", require "dapui"
 map("n", "<F5>", function()
   dap.continue()
