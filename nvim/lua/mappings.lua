@@ -40,6 +40,10 @@ map("n", "<F5>", function()
   dap.continue()
 end, { desc = "Start or continue debugging session" })
 
+map("n", "<F8>", function()
+  dap.step_back()
+end, { desc = "Step back" })
+
 map("n", "<F9>", function()
   dap.step_over()
 end, { desc = "Step over the current line" })

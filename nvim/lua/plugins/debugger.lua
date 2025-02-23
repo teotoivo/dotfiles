@@ -9,6 +9,28 @@ return {
     local dap, dapui = require "dap", require "dapui"
     require("dapui").setup()
 
+    dap.adapters.codelldb = {
+      type = "server",
+      port = "${port}",
+      executable = {
+        command = vim.fn.stdpath "data" .. "/mason/bin/codelldb",
+        args = { "--port", "${port}" },
+      },
+    }
+
+    dap.configurations.c = {
+      {
+        name = "Launch",
+        type = "codelldb",
+        request = "launch",
+        program = function()
+          return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+        end,
+        cwd = "${workspaceFolder}",
+        stopOnEntry = false,
+        args = {},
+      },
+    }
     dap.listeners.before.attach.dapui_config = function()
       dapui.open()
     end
@@ -21,26 +43,6 @@ return {
     dap.listeners.before.event_exited.dapui_config = function()
       dapui.close()
     end
-
-    dap.adapters.gdb = {
-      type = "executable",
-      command = "gdb",
-      args = { "--interpreter=dap", "--eval-command", "set print pretty on" },
-    }
-
-    dap.configurations.c = {
-      {
-        name = "Launch GDB",
-        type = "gdb",
-        request = "launch",
-        program = function()
-          return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-        end,
-        cwd = "${workspaceFolder}",
-        stopAtEntry = false,
-        console = "integratedTerminal",
-      },
-    }
 
     vim.cmd "hi DapBreakpointColor guifg=#fa4848"
     vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DapBreakpointColor", linehl = "", numhl = "" })
