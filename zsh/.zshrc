@@ -143,4 +143,3 @@ export VISUAL="nvim"
 
 # Created by `pipx` on 2025-02-17 18:32:53
 export PATH="$PATH:/home/teotoivo/.local/bin"
-source ~/powerlevel10k/powerlevel10k.zsh-theme
