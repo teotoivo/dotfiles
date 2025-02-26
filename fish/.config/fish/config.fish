@@ -11,7 +11,6 @@ set -gx FZF_ALT_C_OPTS "--preview 'ls -la {}'"
 set -g fzf_preview_file_cmd "bat --style=numbers --color=always"
 set -g fzf_preview_dir_cmd "ls -la"
 
-
 function fish_greeting
 
 end
