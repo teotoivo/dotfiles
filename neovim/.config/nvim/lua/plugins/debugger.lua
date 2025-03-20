@@ -22,7 +22,7 @@ return {
 
 		dap.adapters.pico = {
 			type = "executable",
-			command = "gdb",
+			command = "arm-none-eabi-gdb",
 			args = { "--interpreter=dap", "--eval-command", "set print pretty on" },
 		}
 
