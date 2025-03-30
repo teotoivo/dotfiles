@@ -61,12 +61,23 @@ return {
           cwd = "${workspaceFolder}",
         },
         dap_cortex_debug.openocd_config({
-          name = "Debug with OpenOCD",
+          name = "Debug Pico with OpenOCD",
           cwd = "${workspaceFolder}",
           executable = function()
             return vim.fn.input("Path to ELF: ", vim.fn.getcwd() .. "", "file")
           end, -- change to your binary's path
           configFiles = { "interface/cmsis-dap.cfg", "target/rp2040.cfg" }, -- adjust to your OpenOCD config file(s)
+          gdbTarget = "localhost:3333", -- set the correct GDB target port if needed
+          rttConfig = dap_cortex_debug.rtt_config(0), -- configures the first RTT channel
+          showDevDebugOutput = false,
+        }),
+        dap_cortex_debug.openocd_config({
+          name = "Debug Pico 2 with OpenOCD",
+          cwd = "${workspaceFolder}",
+          executable = function()
+            return vim.fn.input("Path to ELF: ", vim.fn.getcwd() .. "", "file")
+          end, -- change to your binary's path
+          configFiles = { "interface/cmsis-dap.cfg", "target/rp2350.cfg" }, -- adjust to your OpenOCD config file(s)
           gdbTarget = "localhost:3333", -- set the correct GDB target port if needed
           rttConfig = dap_cortex_debug.rtt_config(0), -- configures the first RTT channel
           showDevDebugOutput = false,
