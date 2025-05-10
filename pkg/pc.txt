@@ -1,0 +1,4 @@
+# PC-specific packages
+steam
+nvidia
+

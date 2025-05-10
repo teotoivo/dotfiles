@@ -1,0 +1,5 @@
+# Laptop-specific packages
+tlp
+xorg-xbacklight
+xf86-video-intel
+

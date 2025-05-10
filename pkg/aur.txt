@@ -1,0 +1,17 @@
+# AUR packages
+google-chrome
+visual-studio-code-bin
+spotify
+nerd-fonts-hack
+
+# Hyprland & ecosystem
+hyprland
+xdg-desktop-portal-hyprland
+hyprpaper
+hyprlock
+hypridle
+hyprshot
+neovim-nightly-bin
+firefox-nightly-bin
+catppuccin-gtk-theme-mocha
+nwg-look

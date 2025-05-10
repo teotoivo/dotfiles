@@ -1,0 +1,30 @@
+# Base packages
+git
+zsh
+htop
+tmux
+openssh
+stow
+os-prober
+zsh
+nodejs
+npm
+
+# Hyprland dependencies
+waybar
+swaylock
+swaybg
+wl-clipboard
+xdg-utils
+qt5-wayland
+qt6-wayland
+polkit-gnome
+brightnessctl
+playerctl
+network-manager-applet
+ghostty
+wofi
+qt5ct
+qt6ct
+gnome-themes-extra
+nerd-fonts-jetbrains-mono
