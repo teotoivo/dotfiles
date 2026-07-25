@@ -3,7 +3,7 @@ return {
 	{
 		"folke/snacks.nvim",
 		priority = 1000,
-		lazy = true,
+		lazy = false,
 		-- NOTE: Options
 		opts = {
 			-- Styling for each Item of Snacks
@@ -23,9 +23,18 @@ return {
 				enabled = true,
 				exclude = { "latex" },
 			},
+			explorer = {
+				replace_netrw = true,
+			},
 			-- HACK: read picker docs @ https://github.com/folke/snacks.nvim/blob/main/docs/picker.md
 			picker = {
 				enabled = true,
+				sources = {
+					explorer = {
+						hidden = true,
+						ignored = true,
+					},
+				},
 				matchers = {
 					frecency = true,
 					cwd_bonus = false,
@@ -138,11 +147,69 @@ return {
 				},
 			},
 			dashboard = {
-				enabled = true,
+				width = 18,
+				preset = {
+					keys = {
+						{
+							icon = "",
+							key = "f",
+							desc = "Find file",
+							action = ":lua Snacks.dashboard.pick('files')",
+						},
+						{ icon = "", key = "n", desc = "New file", action = ":ene | startinsert" },
+						{
+							icon = "",
+							key = "g",
+							desc = "Grep text",
+							action = ":lua Snacks.dashboard.pick('live_grep')",
+						},
+						{
+							icon = "",
+							key = "r",
+							desc = "Recent file",
+							action = ":lua Snacks.dashboard.pick('oldfiles')",
+						},
+						{
+							icon = "",
+							key = "c",
+							desc = "Config",
+							action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
+						},
+						{ icon = "", key = "s", desc = "Session", section = "session" },
+						{
+							icon = "",
+							key = "L",
+							desc = "Lazy",
+							action = ":Lazy",
+							enabled = package.loaded.lazy ~= nil,
+						},
+						{ icon = "", key = "q", desc = "Quit", action = ":qa" },
+					},
+					header = [[
+                                                                   
+      ████ ██████           █████      ██                 btw
+     ███████████             █████                            
+     █████████ ███████████████████ ███   ███████████  
+    █████████  ███    █████████████ █████ ██████████████  
+   █████████ ██████████ █████████ █████ █████ ████ █████  
+ ███████████ ███    ███ █████████ █████ █████ ████ █████ 
+██████  █████████████████████ ████ █████ █████ ████ ██████
+]],
+				},
+				formats = {
+					key = { "" },
+				},
 			},
 		},
 		-- NOTE: Keymaps
 		keys = {
+			{
+				"<leader>fe",
+				function()
+					require("snacks").explorer()
+				end,
+				desc = "Explorer",
+			},
 			{
 				"<leader>lg",
 				function()
@@ -165,7 +232,7 @@ return {
 				desc = "Fast Rename Current File",
 			},
 			{
-				"<leader>bd",
+				"<leader>db",
 				function()
 					require("snacks").bufdelete()
 				end,

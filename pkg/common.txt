@@ -27,4 +27,4 @@ wofi
 qt5ct
 qt6ct
 gnome-themes-extra
-nerd-fonts-jetbrains-mono
+ttf-jetbrains-mono-nerd

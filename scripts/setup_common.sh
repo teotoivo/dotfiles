@@ -3,8 +3,8 @@
 # Common system config (git, ssh, etc.)
 
 # Git identity
-git config --global user.name "Teo"
-git config --global user.email "teo@example.com"
+git config --global user.name "teotoivo"
+git config --global user.email "teo.maximilien@gmail.com"
 
 # Enable and start SSH
 sudo systemctl enable sshd
