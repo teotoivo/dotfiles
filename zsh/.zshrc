@@ -57,3 +57,15 @@ alias dev='cd ~/dev'
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+
+export PATH="$HOME/opt/cross/bin/:$PATH"
