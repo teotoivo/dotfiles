@@ -28,3 +28,5 @@ qt5ct
 qt6ct
 gnome-themes-extra
 nerd-fonts-jetbrains-mono
+ripgrep
+fd

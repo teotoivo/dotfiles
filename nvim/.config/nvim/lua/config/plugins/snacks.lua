@@ -3,7 +3,7 @@ return {
 	{
 		"folke/snacks.nvim",
 		priority = 1000,
-		lazy = true,
+		lazy = false,
 		-- NOTE: Options
 		opts = {
 			-- Styling for each Item of Snacks

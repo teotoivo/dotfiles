@@ -15,3 +15,5 @@ neovim-nightly-bin
 firefox-nightly-bin
 catppuccin-gtk-theme-mocha
 nwg-look
+hyperfluent-grub-theme-arch
+

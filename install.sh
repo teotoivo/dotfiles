@@ -141,7 +141,7 @@ else
 fi
 
 
-# Step X: Install and configure tmux
+# Step 9: Install and configure tmux
 echo "[STEP] Installing tmux..."
 # Setup Catppuccin theme
 THEME_DIR="$HOME/.config/tmux/plugins/catppuccin"
@@ -152,4 +152,27 @@ else
 	echo "[INFO] Catppuccin tmux theme already installed."
 fi
 
-# Add more modules here as needed
+
+
+echo "[STEP] Configuring GRUB theme"
+theme_file="/usr/share/grub/themes/hyperfluent-grub-theme-arch/theme.txt"
+grub_cfg="/etc/default/grub"
+
+if [[ -f "$theme_file" ]]; then
+    echo "[STEP] Configuring GRUB to use HyperFluent theme..."
+
+sudo sed -i "s|^#\?\s*GRUB_THEME=.*$|GRUB_THEME=\"$theme_file\"|" "$grub_cfg"
+sudo sed -i 's|^GRUB_TERMINAL_OUTPUT=.*|GRUB_TERMINAL_OUTPUT="gfxterm"|' "$grub_cfg"
+
+    # Regenerate GRUB config
+    if [[ -d /boot/grub ]]; then
+        sudo grub-mkconfig -o /boot/grub/grub.cfg
+    elif [[ -d /boot/grub2 ]]; then
+        sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+    else
+        echo "[ERROR] Could not detect GRUB directory. Manual intervention required."
+        return 1
+    fi
+else
+    echo "[WARN] Theme file not found: $theme_file"
+fi
