@@ -67,16 +67,16 @@ vim.keymap.set("n", "<leader>tn", "<cmd>tabn<CR>") --go to next
 vim.keymap.set("n", "<leader>tp", "<cmd>tabp<CR>") --go to pre
 vim.keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>") --open current tab in new tab
 
--- Split window vertically
-vim.keymap.set("n", "<leader>sv", "<cmd>vsplit<CR>", { desc = "Split window vertically" })
 
--- Split window horizontally
-vim.keymap.set("n", "<leader>sh", "<cmd>split<CR>", { desc = "Split window horizontally" })
-
--- Make splits equal size
-vim.keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })
-
--- Close current split window
+=======
+--split management
+vim.keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
+-- split window vertically
+vim.keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
+-- split window horizontally
+vim.keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
+-- close current split window
+>>>>>>> refs/remotes/origin/main
 vim.keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" })
 
 -- Copy filepath to the clipboard

@@ -2,7 +2,6 @@
 google-chrome
 visual-studio-code-bin
 spotify
-nerd-fonts-hack
 
 # Hyprland & ecosystem
 hyprland

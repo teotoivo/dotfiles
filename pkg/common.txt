@@ -27,6 +27,8 @@ wofi
 qt5ct
 qt6ct
 gnome-themes-extra
+<<<<<<< HEAD
 nerd-fonts-jetbrains-mono
 ripgrep
 fd
+=======
